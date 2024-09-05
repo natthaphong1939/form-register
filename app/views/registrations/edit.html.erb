@@ -1,0 +1,44 @@
+<!-- app/views/registrations/edit.html.erb -->
+<h1>Edit Registration</h1>
+
+<%= form_with(model: @registration, local: true) do |form| %>
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :birthday %>
+    <%= form.date_select :birthday %>
+  </div>
+
+  <div>
+    <%= form.label :gender %>
+    <%= form.radio_button :gender, 'Male' %> Male
+    <%= form.radio_button :gender, 'Female' %> Female
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :phone_number %>
+    <%= form.telephone_field :phone_number %>
+  </div>
+
+  <div>
+    <%= form.label :subject %>
+    <%= form.select :subject, ['Math', 'Science', 'English'] %>
+  </div>
+
+  <div>
+    <%= form.submit "Update Registration" %>
+  </div>
+<% end %>

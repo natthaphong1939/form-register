@@ -18,6 +18,19 @@ class RegistrationsController < ApplicationController
       render :index
     end
   end
+
+  def edit
+    @registration = Registration.find(params[:id])
+  end
+
+  def update
+    @registration = Registration.find(params[:id])
+    if @registration.update(registration_params)
+      redirect_to @registration, notice: 'Registration was successfully updated.'
+    else
+      render :edit
+    end
+  end
   
   private
 

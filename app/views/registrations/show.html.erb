@@ -24,6 +24,7 @@
         <td><%= registration.email %></td>
         <td><%= registration.phone_number %></td>
         <td><%= registration.subject %></td>
+        <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
       </tr>
     <% end %>
   </tbody>
