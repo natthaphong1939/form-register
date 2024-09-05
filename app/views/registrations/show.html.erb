@@ -1,0 +1,32 @@
+<h1>Registered</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Birthday</th>
+      <th>Gender</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Subject</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @registrations.each do |registration| %>
+      <tr>
+        <td><%= registration.first_name %></td>
+        <td><%= registration.last_name %></td>
+        <td><%= registration.birthday %></td>
+        <td><%= registration.gender %></td>
+        <td><%= registration.email %></td>
+        <td><%= registration.phone_number %></td>
+        <td><%= registration.subject %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Registration', new_registration_path %>
