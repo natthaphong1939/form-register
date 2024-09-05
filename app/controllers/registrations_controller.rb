@@ -13,7 +13,7 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(registration_params)
     if @registration.save
-      redirect_to registrations_url(@registration)
+      redirect_to registration_url(@registration)
     else
       render :index
     end
