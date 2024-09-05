@@ -20,20 +20,18 @@ FROM base as build
 # Install packages needed to build gems
 RUN apk add --no-cache build-base git vips-dev
 
-# Install application gems
+# Copy Gemfile, Gemfile.lock, and the entire app code in one step
 COPY Gemfile Gemfile.lock ./
+COPY . .
+
+# Install application gems and clean up
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
-# Copy application code
-COPY . .
-
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
-
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+# Precompile bootsnap code and assets for faster boot times
+RUN bundle exec bootsnap precompile app/ lib/ && \
+    SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 
 # Final stage for app image
@@ -42,7 +40,7 @@ FROM base
 # Install packages needed for deployment
 RUN apk add --no-cache curl sqlite-libs vips
 
-# Copy built artifacts: gems, application
+# Copy built artifacts: gems, application, and runtime dependencies in one step
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
