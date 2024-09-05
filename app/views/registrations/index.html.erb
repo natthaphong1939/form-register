@@ -1,3 +1,8 @@
-<%= link_to "New registration", new_registration_path %>
-<% @registrations = Registration.all %>
-<%= link_to "All registration", registration_url(@registrations) %>
+<div class="container">
+    <h1>Welcome</h1>
+    <div class="row">
+        <% @registrations = Registration.all %>
+        <%= link_to "Users", registration_url(@registrations), class: 'btn btn-secondary' %>
+        <%= link_to "Register", new_registration_path, class: 'btn btn-primary' %>
+    </div>
+</div>
