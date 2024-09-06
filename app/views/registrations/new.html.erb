@@ -2,6 +2,7 @@
     <h1>Register Form</h1>
 
     <%= form_with(model: @registration, url: register_path) do |form| %>
+    <div class="form">
         <div class="form-row">
             <div class="form-group">
                 <%= form.label :first_name %>
@@ -47,6 +48,7 @@
             <%= form.label :subject %>
             <%= form.select :subject, ['Math', 'Science', 'History', 'Art'] %>
         </div>
+    </div>
 
         <div class="spacing-btn">
             <%= link_to "Back", root_path, class: 'btn btn-secondary' %> 

@@ -24,7 +24,6 @@ body {
 }
 
 h1 {
-    text-align: center;
     margin-bottom: 1.5rem;
 }
 
@@ -35,7 +34,16 @@ a {
 .row {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+
+}
+
+.row .btn {
+    flex: 0;
+    height: fit-content;
+}
+
+.form {
+    margin-bottom: 1.5rem;
 }
 
 .form-row {
@@ -78,11 +86,11 @@ a {
 .spacing-btn {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
     gap: 0.5rem;
 }
 
 .btn {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,7 +98,6 @@ a {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 200px;
     text-decoration: none;
     font-size: 16px;
 }
@@ -112,6 +119,25 @@ a {
 .btn-secondary:hover {
     background-color: #e0e0e0;
 }
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-danger {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #ff3333;
+}
+
 .table-overflow {
     overflow-x: auto;
 }
@@ -139,8 +165,8 @@ tr:nth-child(even) {
 th {
     background-color: #5d62e0;
     color: white;
+    text-align: center;
 }
-
 
 @media screen and (max-width: 425px) {
     body {
@@ -150,6 +176,23 @@ th {
     .container {
         width: 90%;
         margin: 20px;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 24px;
+    }
+    
+    tr {
+        font-size: 12px;
+    }
+
+    tr .btn {
+        font-size: 12px;
     }
 
     .form-row {

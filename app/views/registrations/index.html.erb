@@ -1,8 +1,7 @@
 <div class="container">
-    <h1>Registered Users</h1>
-
-    <div class="spacing-btn">
-        <%= link_to 'Register', register_path, class: 'btn btn-primary' %>
+    <div class="row">
+        <h1>Registered Users</h1>
+        <%= link_to 'Register', register_path, class: 'btn btn-success' %>
     </div>
 
     <% if @registrations.any? %>
@@ -10,14 +9,14 @@
             <table class="table">
                 <thead>
                     <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Birthday</th>
-                    <th>Gender</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Subject</th>
-                    <th>Actions</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Birthday</th>
+                        <th>Gender</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Subject</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
 
@@ -32,8 +31,10 @@
                         <td><%= registration.phone_number %></td>
                         <td><%= registration.subject %></td>
                         <td>
-                        <%= link_to 'Edit', edit_user_path(registration), class: '' %> 
-                        <%= link_to 'Delete', delete_user_path(registration), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: '' %>
+                        <div class="spacing-btn">
+                            <%= link_to 'Edit', edit_user_path(registration), class: 'btn btn-primary' %> 
+                            <%= link_to 'Delete', delete_user_path(registration), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: 'btn btn-danger' %>
+                        <div>
                         </td>
                     </tr>
                     <% end %>
