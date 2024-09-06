@@ -27,4 +27,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/form-register:latest
-          platforms: linux/arm64, linux/amd64
