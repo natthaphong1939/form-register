@@ -1,19 +1,16 @@
 class RegistrationsController < ApplicationController
   def index
+    @registrations = Registration.all
   end
 
   def new
     @registration = Registration.new
   end
 
-  def show
-    @registrations = Registration.all
-  end
-
   def create
     @registration = Registration.new(registration_params)
     if @registration.save
-      redirect_to registration_url(@registration)
+      redirect_to root_path, notice: 'Registration was successfully created.'
     else
       render :index
     end
@@ -26,12 +23,18 @@ class RegistrationsController < ApplicationController
   def update
     @registration = Registration.find(params[:id])
     if @registration.update(registration_params)
-      redirect_to @registration, notice: 'Registration was successfully updated.'
+      redirect_to root_path, notice: 'Registration was successfully updated.'
     else
       render :edit
     end
   end
-  
+
+  def destroy
+    @registration = Registration.find(params[:id])
+    @registration.destroy
+    redirect_to root_path, notice: 'Registration was successfully destroyed.'
+  end
+
   private
 
   def registration_params

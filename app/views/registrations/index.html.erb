@@ -1,8 +1,45 @@
 <div class="container">
-    <h1>Welcome</h1>
-    <div class="row">
-        <% @registrations = Registration.all %>
-        <%= link_to "Users", registration_url(@registrations), class: 'btn btn-secondary' %>
-        <%= link_to "Register", new_registration_path, class: 'btn btn-primary' %>
+    <h1>Registered Users</h1>
+
+    <div class="spacing-btn">
+        <%= link_to 'Register', register_path, class: 'btn btn-primary' %>
     </div>
+
+    <% if @registrations.any? %>
+        <div class="table-overflow">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birthday</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Subject</th>
+                    <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% @registrations.each do |registration| %>
+                    <tr>
+                        <td><%= registration.first_name %></td>
+                        <td><%= registration.last_name %></td>
+                        <td><%= registration.birthday %></td>
+                        <td><%= registration.gender %></td>
+                        <td><%= registration.email %></td>
+                        <td><%= registration.phone_number %></td>
+                        <td><%= registration.subject %></td>
+                        <td>
+                        <%= link_to 'Edit', edit_user_path(registration), class: '' %> 
+                        <%= link_to 'Delete', delete_user_path(registration), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: '' %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <div>
+    <% end %>
 </div>
+
