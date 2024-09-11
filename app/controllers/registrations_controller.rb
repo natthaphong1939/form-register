@@ -12,7 +12,7 @@ class RegistrationsController < ApplicationController
     if @registration.save
       redirect_to root_path, notice: 'Registration was successfully created.'
     else
-      render :index
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -25,7 +25,7 @@ class RegistrationsController < ApplicationController
     if @registration.update(registration_params)
       redirect_to root_path, notice: 'Registration was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

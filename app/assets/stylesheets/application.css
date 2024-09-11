@@ -31,6 +31,11 @@ a {
     text-decoration: none;
 }
 
+.error-message {
+    font-size: 14px;
+    color: red;
+}
+
 .column {
     display: flex;
     flex-direction: column;
@@ -50,7 +55,7 @@ a {
 .form-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
     gap: 1rem;
 }
 
@@ -58,7 +63,7 @@ a {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    height: 80px;
 }
 
 .form-group div {
@@ -72,12 +77,14 @@ a {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 250px;
 }
 
 .form-group select {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 100%;
 }
 
 .form-row a {
@@ -149,7 +156,8 @@ table {
     margin-top: 1.5rem;
 }
 
-th, td {
+th,
+td {
     padding: 0.3rem 0.75rem;
     text-align: left;
     border: 1px solid #ddd;
@@ -183,7 +191,7 @@ th {
         text-align: center;
         font-size: 24px;
     }
-    
+
     tr {
         font-size: 12px;
     }
@@ -194,5 +202,9 @@ th {
 
     .form-row {
         flex-direction: column;
+    }
+
+    .form-control {
+        width: 100%;
     }
 }
