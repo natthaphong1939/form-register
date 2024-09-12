@@ -26,8 +26,8 @@
             <div class="form-row">
                 <div class="form-group">
                     <%= form.label :birthday %>
-                    <%= form.date_field :birthday, class: 'form-control' %>
-                    <div class="error-message" >
+                    <%= form.date_field :birthday, class: 'form-control', data: { controller: "calendar", calendar_target: "dateField" } %>
+                    <div class="error-message" > 
                         <%= @registration.errors.full_messages_for(:birthday).join(', ') %>
                     </div>
                 </div>

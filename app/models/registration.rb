@@ -13,7 +13,11 @@ class Registration < ApplicationRecord
 
   def check_birthday_age
     if birthday.present?
-      if birthday > 18.years.ago.to_date
+      birthday_in_gregorian = birthday.change(year: birthday.year - 543)
+  
+      eighteen_years_ago = 18.years.ago.to_date
+  
+      if birthday_in_gregorian > eighteen_years_ago
         errors.add(:birthday, "You must be at least 18 years old")
       end
     end
