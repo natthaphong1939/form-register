@@ -1,11 +1,11 @@
 <div class="container">
     <div class="column">
         <h1>Registered Users</h1>
-        <%= link_to 'Register', register_path, class: 'btn btn-success' %>
+        <%= button_to 'Register', register_modal_registrations_path, method: :get, class: 'btn btn-success' %>
     </div>
 
     <% if @registrations.any? %>
-        <div class="table-overflow">
+        <div class="table-overflow" id="index">
             <table class="table">
                 <thead>
                     <tr>
@@ -22,25 +22,24 @@
 
                 <tbody>
                     <% @registrations.each do |registration| %>
-                    <tr>
-                        <td><%= registration.first_name %></td>
-                        <td><%= registration.last_name %></td>
-                        <td><%= registration.birthday %></td>
-                        <td><%= registration.gender %></td>
-                        <td><%= registration.email %></td>
-                        <td><%= registration.phone_number %></td>
-                        <td><%= registration.subject %></td>
-                        <td>
-                        <div class="spacing-btn">
-                            <%= link_to 'Edit', edit_user_path(registration), class: 'btn btn-primary' %> 
-                            <%= link_to 'Delete', delete_user_path(registration), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },class: 'btn btn-danger' %>
-                        <div>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><%= registration.first_name %></td>
+                            <td><%= registration.last_name %></td>
+                            <td><%= registration.birthday %></td>
+                            <td><%= registration.gender %></td>
+                            <td><%= registration.email %></td>
+                            <td><%= registration.phone_number %></td>
+                            <td><%= registration.subject %></td>
+                            <td>
+                                <%= link_to 'Delete', registration_path(registration), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+                            </td>
+                        </tr>
                     <% end %>
                 </tbody>
             </table>
-        <div>
+        </div>
     <% end %>
 </div>
 
+<!-- Modal frame -->
+<turbo-frame id="modal"></turbo-frame>

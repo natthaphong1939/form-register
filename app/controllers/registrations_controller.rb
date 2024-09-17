@@ -1,4 +1,6 @@
 class RegistrationsController < ApplicationController
+  include ActionView::RecordIdentifier
+  
   def index
     @registrations = Registration.all
   end
@@ -10,22 +12,12 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(registration_params)
     if @registration.save
-      redirect_to root_path, notice: 'Registration was successfully created.'
+      redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
-    end
-  end
-
-  def edit
-    @registration = Registration.find(params[:id])
-  end
-
-  def update
-    @registration = Registration.find(params[:id])
-    if @registration.update(registration_params)
-      redirect_to root_path, notice: 'Registration was successfully updated.'
-    else
-      render :edit, status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('modal', partial: 'form', locals: { registration: @registration }), status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -33,6 +25,11 @@ class RegistrationsController < ApplicationController
     @registration = Registration.find(params[:id])
     @registration.destroy
     redirect_to root_path, notice: 'Registration was successfully destroyed.'
+  end
+
+  def register_modal
+    @registration = Registration.new
+    render turbo_stream: turbo_stream.replace('modal', partial: "form", locals: { registrations_path: @registration })
   end
 
   private
