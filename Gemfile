@@ -68,4 +68,5 @@ group :test do
   gem "cucumber-rails", require: false
   gem "factory_bot_rails"
   gem "database_cleaner-active_record"
+  gem 'rails-controller-testing'
 end
