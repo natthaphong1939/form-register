@@ -65,4 +65,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "rspec-rails"
+  gem "cucumber-rails", require: false
+  gem "factory_bot_rails"
+  gem "database_cleaner-active_record"
 end
