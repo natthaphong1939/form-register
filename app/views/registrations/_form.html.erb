@@ -8,7 +8,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <%= form.label :first_name %>
-                            <%= form.text_field :first_name, class: 'form-control' %>
+                            <%= form.text_field :first_name, id: 'first_name', class: 'form-control' %>
                             <div class="error-message" >
                                 <%= @registration.errors.full_messages_for(:first_name).join(', ') %>
                             </div>
@@ -17,7 +17,7 @@
 
                         <div class="form-group">
                             <%= form.label :last_name %>
-                            <%= form.text_field :last_name, class: 'form-control' %>
+                            <%= form.text_field :last_name, id: 'last_name', class: 'form-control' %>
                             <div class="error-message" >
                                 <%= @registration.errors.full_messages_for(:last_name).join(', ') %>
                             </div>
@@ -27,7 +27,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <%= form.label :birthday %>
-                            <%= form.date_field :birthday, class: 'form-control', data: { controller: "calendar", calendar_target: "dateField" } %>
+                            <%= form.date_field :birthday, id: 'birthday', class: 'form-control', data: { controller: "calendar", calendar_target: "dateField" } %>
                             <div class="error-message" > 
                                 <%= @registration.errors.full_messages_for(:birthday).join(', ') %>
                             </div>
@@ -50,7 +50,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <%= form.label :email %>
-                            <%= form.email_field :email, class: 'form-control' %>
+                            <%= form.email_field :email, id: 'email', class: 'form-control' %>
                             <div class="error-message" >
                                 <%= @registration.errors.full_messages_for(:email).join(', ') %>
                             </div>
@@ -60,6 +60,7 @@
                             <%= form.label :phone_number %>
                             <%= form.text_field :phone_number, 
                                                 placeholder: '123-456-7890', 
+                                                id: 'phone_number',
                                                 class: 'form-control', 
                                                 data: { controller: "phone-format", phone_format_target: "input" } %>
                             <div class="error-message" >
@@ -70,7 +71,7 @@
 
                     <div class="form-group">
                         <%= form.label :subject %>
-                        <%= form.select :subject, ['Math', 'Science', 'History', 'Art'], include_blank: 'Select', class: 'form-control' %>
+                        <%= form.select :subject, ['Math', 'Science', 'History', 'Art'], include_blank: 'Select', id: 'subjects', class: 'form-control' %>
                         <div class="error-message" >
                             <%= @registration.errors.full_messages_for(:subject).join(', ') %>
                         </div>

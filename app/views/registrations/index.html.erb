@@ -1,7 +1,7 @@
 <div class="container">
     <div class="column">
         <h1>Registered Users</h1>
-        <%= button_to 'Register', register_modal_registrations_path, method: :get, class: 'btn btn-success' %>
+        <%= button_to 'Register', register_modal_registrations_path, method: :get, class: 'btn btn-success', id: 'register-button' %>
     </div>
 
     <% if @registrations.any? %>
@@ -31,7 +31,7 @@
                             <td><%= registration.phone_number %></td>
                             <td><%= registration.subject %></td>
                             <td>
-                                <%= link_to 'Delete', registration_path(registration), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+                                <%= button_to 'Delete', registration_path(registration), method: :delete, data: {turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' %>
                             </td>
                         </tr>
                     <% end %>
